@@ -59,5 +59,16 @@ namespace VirtualPet
             Boredom = 60;
             return Boredom;
         }
+
+        public void SetHealth(int health)
+        {
+            Health = health;
+        }
+
+        public int GetHealth()
+        {
+            Health = 30;
+            return Health;
+        }
     }
 }
