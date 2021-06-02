@@ -21,6 +21,7 @@ namespace VirtualPet
             Health = 30;
         }
 
+        
         public void SetName(string name) 
         {
             Name = name;
