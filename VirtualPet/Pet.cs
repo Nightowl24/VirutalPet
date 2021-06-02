@@ -49,8 +49,7 @@ namespace VirtualPet
 
         public int GetHunger()
         {
-            
-            return Hunger;
+             return Hunger;
         }
         public void SetBoredom(int boredom)
         {

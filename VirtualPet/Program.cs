@@ -13,7 +13,7 @@ namespace VirtualPet
             myPet.SetName(Input);
 
             //myPet.Name = name;
-            
+
 
             Console.WriteLine("What kind of species is your pet? ");
             Input = Console.ReadLine();
@@ -41,20 +41,20 @@ namespace VirtualPet
                 switch (atmChoice)
                 {
                     case "1":
-                        double currentBalance = atm.GetBalance();
-                        Console.WriteLine($"Your current balance is: {currentBalance:C2}");
+                        //double currentBalance = atm.GetBalance();
+                        //Console.WriteLine($"Your current balance is: {currentBalance:C2}");
                         break;
                     case "2":
-                        atm.Withdraw();
+                        //atm.Withdraw();
                         Console.WriteLine("You withdrew $10");
                         break;
                     case "3":
-                        atm.Deposit();
+                        //atm.Deposit();
                         Console.WriteLine("You deposited $50");
                         break;
                     case "4":
                         Console.WriteLine("Thank you for banking with us.");
-                        keepBanking = false;
+                        VirtualPet = false;
                         break;
                     default:
                         Console.WriteLine("Invalid option");
@@ -66,4 +66,5 @@ namespace VirtualPet
 
             }
         }
+    }
 }
