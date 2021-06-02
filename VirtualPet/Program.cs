@@ -4,9 +4,10 @@ namespace VirtualPet
 {
     class Program
     {
+        public static Pet myPet = new Pet();
         static void Main(string[] args)
         {
-            Pet myPet = new Pet();
+            
             Console.WriteLine("Hello! Welcome to Virtual Pets");
             Console.WriteLine("What is your pets name? ");
             string Input = Console.ReadLine();
@@ -19,7 +20,9 @@ namespace VirtualPet
             Input = Console.ReadLine();
             myPet.SetSpecies(Input);
             Console.WriteLine($"Your {myPet.Species}'s name is {myPet.Name}.");
+
             DisplayMenu();
+            
 
         }
         public static void DisplayMenu()
@@ -33,16 +36,15 @@ namespace VirtualPet
                 Console.WriteLine("2. Feed your pet");
                 Console.WriteLine("3. Take pet to the doctor");
                 Console.WriteLine("4. Play with pet");
-                Console.WriteLine("4.5. Change pet name");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Change pet name");
+                Console.WriteLine("6. Exit");
 
-                string atmChoice = Console.ReadLine();
+                string menuChoice = Console.ReadLine();
 
-                switch (atmChoice)
+                switch (menuChoice)
                 {
                     case "1":
-                        //double currentBalance = atm.GetBalance();
-                        //Console.WriteLine($"Your current balance is: {currentBalance:C2}");
+                        myPet.PetStatus();
                         break;
                     case "2":
                         //atm.Withdraw();

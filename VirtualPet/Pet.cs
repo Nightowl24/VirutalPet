@@ -97,5 +97,10 @@ namespace VirtualPet
             Boredom += 5;
             Health -= 5;
         }
+
+        public void PetStatus()
+        {
+            Console.Write($"Health: {Health} \nHunger: {Hunger} \nBoredom: {Boredom}");
+        }
     }
 }
