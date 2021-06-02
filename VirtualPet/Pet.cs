@@ -9,14 +9,16 @@ namespace VirtualPet
         public string Name { get; set; }
         public string Species { get; set; }
         public int Hunger { get; set; }
-
         public int Boredom { get; set; }
         public int Health { get; set; }
-
+        
         public Pet()
         {
             Name = "";
             Species = "";
+            Hunger = 50;
+            Boredom = 60;
+            Health = 30;
         }
 
         public void SetName(string name) 
@@ -46,7 +48,7 @@ namespace VirtualPet
 
         public int GetHunger()
         {
-            Hunger = 50;
+            
             return Hunger;
         }
         public void SetBoredom(int boredom)
@@ -56,7 +58,7 @@ namespace VirtualPet
 
         public int GetBoredom()
         {
-            Boredom = 60;
+            
             return Boredom;
         }
 
@@ -67,8 +69,33 @@ namespace VirtualPet
 
         public int GetHealth()
         {
-            Health = 30;
+            
             return Health;
+        }
+
+        public void Feed()
+        {
+            Hunger -= 40;
+            
+        }
+
+        public void SeeDoctor()
+        {
+            Health += 30;
+        }
+
+        public void Play()
+        {
+            Hunger += 10;
+            Boredom -= 20;
+            Health += 10;
+        }
+
+        public void Tick()
+        {
+            Hunger += 5;
+            Boredom += 5;
+            Health -= 5;
         }
     }
 }
