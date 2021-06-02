@@ -25,9 +25,9 @@ namespace VirtualPet.Tests
         [Fact]
         public void Pet_Should_Have_Name()
         {
-            // testPet.Name = "Pet Name"; 
-            
-            // Assert.Equal("Pet Name", testPet.Name);
+            testPet.Name = "Pet Name";
+
+            Assert.Equal("Pet Name", testPet.Name);
         }
 
         [Fact]
