@@ -7,19 +7,31 @@ namespace VirtualPet
         public static Pet myPet = new Pet();
         static void Main(string[] args)
         {
-            
-            Console.WriteLine("Hello! Welcome to Virtual Pets");
+            // TODO: Check off stuff on GitHub list
+            // TODO: figure out tick()
+            Console.WriteLine("Hello! Welcome to Virtual Pets");        
             Console.WriteLine("What is your pets name? ");
-            string Input = Console.ReadLine();
-            myPet.SetName(Input);
+            string input = Console.ReadLine();
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("The name can't be empty!  Please enter a name: ");
+                input = Console.ReadLine();
+            }
+            myPet.SetName(input);
 
             //myPet.Name = name;
 
-
-            Console.WriteLine("What kind of species is your pet? ");
-            Input = Console.ReadLine();
-            myPet.SetSpecies(Input);
+            Console.WriteLine("What kind of species is your pet? ");    
+            input = Console.ReadLine();
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("The name can't be empty!  Please enter a species: ");
+                input = Console.ReadLine();
+            }
+            myPet.SetSpecies(input);
             Console.WriteLine($"Your {myPet.Species}'s name is {myPet.Name}.");
+            Console.WriteLine("Press any key to continue");         
+            Console.ReadKey();
 
             DisplayMenu();
             
@@ -27,8 +39,8 @@ namespace VirtualPet
         }
         public static void DisplayMenu()
         {
-            bool VirtualPet = true;
-            while (VirtualPet)
+            bool virtualPet = true;
+            while (virtualPet)
             {
                 Console.Clear();
                 Console.WriteLine("\nWhat would you like to do?");
@@ -47,16 +59,30 @@ namespace VirtualPet
                         myPet.PetStatus();
                         break;
                     case "2":
-                        //atm.Withdraw();
-                        Console.WriteLine("You withdrew $10");
+                        myPet.Feed();
+                        Console.WriteLine($"{myPet.GetName()}'s hunger has decreased by 40.");
+                        Console.WriteLine($"Your pet's hunger level is now: {myPet.GetHunger()}");
                         break;
                     case "3":
-                        //atm.Deposit();
-                        Console.WriteLine("You deposited $50");
+                        myPet.SeeDoctor();
+                        Console.WriteLine($"{myPet.GetName()} is feeling better now.");
+                        Console.WriteLine($"Your pet's health level is now: {myPet.GetHealth()}");
                         break;
                     case "4":
-                        Console.WriteLine("Thank you for banking with us.");
-                        VirtualPet = false;
+                        myPet.Play();
+                        Console.WriteLine($"{myPet.GetName()} loves to play!");
+                        Console.WriteLine($"Your pet's boredom has decreased to {myPet.GetBoredom()}, " +
+                            "and their health and hunger have increased.");
+                        break;
+                    case "5":
+                        Console.WriteLine($"That's terrific, {myPet.GetName()} was a REALLY bad name!  What name would you like: ");
+                        string input = Console.ReadLine();
+                        myPet.SetName(input);
+                        Console.WriteLine($"Your {myPet.GetSpecies()}'s name is now {myPet.GetName()}.  A much better choice, if you ask me.");
+                        break;
+                    case "6":
+                        Console.WriteLine("Thank you for playing Virtual Pets");
+                        virtualPet = false;
                         break;
                     default:
                         Console.WriteLine("Invalid option");

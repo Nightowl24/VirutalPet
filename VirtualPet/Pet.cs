@@ -51,6 +51,7 @@ namespace VirtualPet
         {
              return Hunger;
         }
+
         public void SetBoredom(int boredom)
         {
             Boredom = boredom;
@@ -58,7 +59,6 @@ namespace VirtualPet
 
         public int GetBoredom()
         {
-            
             return Boredom;
         }
 
@@ -69,14 +69,12 @@ namespace VirtualPet
 
         public int GetHealth()
         {
-            
             return Health;
         }
 
         public void Feed()
         {
             Hunger -= 40;
-            
         }
 
         public void SeeDoctor()
@@ -88,19 +86,19 @@ namespace VirtualPet
         {
             Hunger += 10;
             Boredom -= 20;
-            Health += 10;
+            Health += 10;           
         }
 
         public void Tick()
         {
             Hunger += 5;
             Boredom += 5;
-            Health -= 5;
+            Health -= 5;          
         }
 
         public void PetStatus()
         {
-            Console.Write($"Health: {Health} \nHunger: {Hunger} \nBoredom: {Boredom}");
+            Console.Write($"{Name}'s Status\nHealth: {Health} \nHunger: {Hunger} \nBoredom: {Boredom}\n");
         }
     }
 }
