@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace VirtualPet
 {
@@ -88,7 +89,8 @@ namespace VirtualPet
                         Console.WriteLine("Invalid option");
                         break;
                 }
-
+                myPet.Tick();
+                myPet.PetStatus();
                 Console.WriteLine("Press any key to continue");
                 Console.ReadKey();
 
