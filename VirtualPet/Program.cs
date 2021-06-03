@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace VirtualPet
 {
@@ -33,6 +34,7 @@ namespace VirtualPet
             Console.WriteLine("Press any key to continue");         
             Console.ReadKey();
 
+            Timer t = new Timer(TimerCallBack, null, 0, 10000);
             DisplayMenu();
             
 
@@ -88,11 +90,22 @@ namespace VirtualPet
                         Console.WriteLine("Invalid option");
                         break;
                 }
+                //myPet.Tick();
+                if(menuChoice != "1") 
+                { 
+                    myPet.PetStatus();
+                }
 
                 Console.WriteLine("Press any key to continue");
                 Console.ReadKey();
 
             }
+        }
+        private static void TimerCallBack(Object o)
+        {
+            myPet.Tick();
+            //Console.WriteLine(DateTime.Now);
+            GC.Collect();
         }
     }
 }
