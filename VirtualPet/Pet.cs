@@ -81,6 +81,7 @@ namespace VirtualPet
             if (Hunger >= 100)
             {
                 Hunger = 100;
+
                 Console.WriteLine($"YOU STARVED {Name} TO DEATH!!!");
                 //Console.Beep(1000, 10000);
                 Console.Title = "Game Over";
@@ -93,6 +94,10 @@ namespace VirtualPet
                                                         
 
                 ");
+
+                Console.WriteLine($"YOU STARVED {Name} TO DEATH!!!....LOSER");
+                Console.Beep(1000, 10000);
+
             }
             else if (Hunger <= 0)
             {
