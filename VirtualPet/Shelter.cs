@@ -22,5 +22,12 @@ namespace VirtualPet
             ShelterPets.Remove(pet);
         }
 
+        public void Playall()
+        {
+            foreach(var pet in ShelterPets)
+            {
+                pet.Play();
+            }
+        }
     }
 }
