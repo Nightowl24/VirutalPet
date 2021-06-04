@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading;
 
 namespace VirtualPet
 {
@@ -94,8 +93,7 @@ namespace VirtualPet
         {
             Hunger += 5;
             Boredom += 5;
-            Health -= 5;
-            //Console.WriteLine($"Time has passed, {Name}'s hunger and boredom have increased by 5 and health has decreased by 5. ");
+            Health -= 5;          
         }
 
         public void PetStatus()
