@@ -8,8 +8,6 @@ namespace VirtualPet
         public static Pet myPet = new Pet();
         static void Main(string[] args)
         {
-            // TODO: Check off stuff on GitHub list
-            // TODO: figure out tick()
             Console.WriteLine("Hello! Welcome to Virtual Pets");        
             Console.WriteLine("What is your pets name? ");
             string input = Console.ReadLine();
