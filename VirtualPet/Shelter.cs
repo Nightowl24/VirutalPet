@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace VirtualPet
 {
-    class Shelter
-    {
+    public class Shelter : Pet
+        
+        
+    {       
+
+        public List<Pet> ShelterPets = new List<Pet>();
+        public void AdmitPet(Pet pet)
+        {
+            ShelterPets.Add(pet);
+        } 
+
+        public void AdoptPet(Pet pet)
+        {
+            ShelterPets.Remove(pet);
+        }
+
     }
 }
