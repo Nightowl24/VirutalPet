@@ -95,7 +95,7 @@ namespace VirtualPet
                 { 
                     myPet.PetStatus();
                 }
-
+                myPet.PetLevels();
                 Console.WriteLine("Press any key to continue");
                 Console.ReadKey();
 

@@ -45,11 +45,12 @@ namespace VirtualPet
         
         public void SetHunger(int hunger)
         {
-            Hunger = hunger;
+           Hunger = hunger;
         }
 
         public int GetHunger()
         {
+            PetLevels();
              return Hunger;
         }
 
@@ -60,6 +61,7 @@ namespace VirtualPet
 
         public int GetBoredom()
         {
+            PetLevels();
             return Boredom;
         }
 
@@ -70,9 +72,46 @@ namespace VirtualPet
 
         public int GetHealth()
         {
+            PetLevels();
             return Health;
         }
+        public void PetLevels()
+        {
+            if (Hunger >= 100)
+            {
+                Hunger = 100;
+                Console.WriteLine($"YOU STARVED {Name} TO DEATH!!!.... ASS-HOLE");
+                Console.Beep(1000, 10000);
+            }
+            else if (Hunger <= 0)
+            {
+                Hunger = 0;
+                
+            }
+            
+            if (Health >= 100)
+            {
+                Health = 100;
+                
+            }
+            else if (Health <= 0)
+            {
+                Health = 0;
+                Console.WriteLine($"YOU KILLED {Name}!!!");
+            }
 
+            if (Boredom >= 100)
+            {
+                Boredom = 100;
+                Console.WriteLine($"YOU KILLED {Name} WITH YOUR BORING WAYS!!!");
+            }
+            else if (Boredom <= 0)
+            {
+                Boredom = 0;
+
+            }
+
+        }
         public void Feed()
         {
             Hunger -= 40;
@@ -92,6 +131,7 @@ namespace VirtualPet
 
         public void Tick()
         {
+            PetLevels();
             Hunger += 5;
             Boredom += 5;
             Health -= 5;
@@ -102,5 +142,7 @@ namespace VirtualPet
         {
             Console.Write($"{Name}'s Status\nHealth: {Health} \nHunger: {Hunger} \nBoredom: {Boredom}\n");
         }
+
+
     }
 }
