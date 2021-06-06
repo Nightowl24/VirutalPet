@@ -34,7 +34,8 @@ namespace VirtualPet
             int index = 1;
             foreach (var pet in ShelterPets)
             {
-                Console.WriteLine($"{index} {pet.Name}");
+            
+               Console.WriteLine($"{index} {pet.Name}'s Status\nHealth: {pet.Health} \nHunger: {pet.Hunger} \nBoredom: {pet.Boredom}\n");
                 index++;
             }
         }
