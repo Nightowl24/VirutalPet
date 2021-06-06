@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+using System.Timers;
 
 namespace VirtualPet
 {
     public class Pet
     {
+        private static Timer timer;
+        private bool isAlive;
+
         public string Name { get; set; }
         public string Species { get; set; }
         public int Hunger { get; set; }
@@ -20,6 +21,11 @@ namespace VirtualPet
             Hunger = 50;
             Boredom = 60;
             Health = 30;
+
+            isAlive = true;
+            timer = new Timer(30000);
+            timer.Enabled = true;
+            timer.Elapsed += TimerCallBack;
         }
 
         public void SetName(string name)
@@ -77,12 +83,11 @@ namespace VirtualPet
 
         public void PetLevels()
         {
-            if (Hunger >= 100)
+            if (Hunger >= 100 && isAlive)
             {
                 Hunger = 100;
 
                 Console.WriteLine($"YOU STARVED {Name} TO DEATH!!!");
-                //Console.Beep(1000, 10000);
                 Console.Title = "Game Over";
                 Console.WriteLine(@"
                    ____    _    __  __ _____    _____     _______ ____
@@ -95,6 +100,7 @@ namespace VirtualPet
 
                 Console.WriteLine($"YOU STARVED {Name} TO DEATH!!!....LOSER");
                 Console.Beep(1000, 10000);
+                isAlive = false;
             }
             else if (Hunger <= 0)
             {
@@ -105,7 +111,7 @@ namespace VirtualPet
             {
                 Health = 100;
             }
-            else if (Health <= 0)
+            else if (Health <= 0 && isAlive)
             {
                 Health = 0;
                 Console.WriteLine($"YOU KILLED {Name}!!!");
@@ -118,9 +124,10 @@ namespace VirtualPet
                   \____/_/   \_\_|  |_|_____|  \___/  \_/  |_____|_| \_\
 
                 ");
+                isAlive = false;
             }
 
-            if (Boredom >= 100)
+            if (Boredom >= 100 && isAlive)
             {
                 Boredom = 100;
                 Console.WriteLine($"YOU KILLED {Name} WITH YOUR BORING WAYS!!!");
@@ -133,6 +140,7 @@ namespace VirtualPet
                   \____/_/   \_\_|  |_|_____|  \___/  \_/  |_____|_| \_\
 
                 ");
+                isAlive = false;
             }
             else if (Boredom <= 0)
             {
@@ -163,12 +171,16 @@ namespace VirtualPet
             Hunger += 5;
             Boredom += 5;
             Health -= 5;
-            //Console.WriteLine($"Time has passed, {Name}'s hunger and boredom have increased by 5 and health has decreased by 5. ");
         }
 
         public void PetStatus()
         {
-            Console.Write($"{Name}'s Status\nHealth: {Health} \nHunger: {Hunger} \nBoredom: {Boredom}\n");
+            Console.WriteLine($"{Name}'s Status\nHealth: {Health} \nHunger: {Hunger} \nBoredom: {Boredom}\n");
+        }
+
+        private void TimerCallBack(object o, EventArgs e)
+        {
+            Tick();
         }
     }
 }
