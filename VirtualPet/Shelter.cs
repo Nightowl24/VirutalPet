@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 namespace VirtualPet
 {
     public class Shelter : Pet
-        
-        
-    {       
 
+    {
         public List<Pet> ShelterPets = new List<Pet>();
+
         public void AdmitPet(Pet pet)
         {
             ShelterPets.Add(pet);
-        } 
+        }
 
         public void AdoptPet(Pet pet)
         {
@@ -24,10 +23,26 @@ namespace VirtualPet
 
         public void Playall()
         {
-            foreach(var pet in ShelterPets)
+            foreach (var pet in ShelterPets)
             {
                 pet.Play();
             }
         }
+
+        public void PetList()
+        {
+            int index = 1;
+            foreach (var pet in ShelterPets)
+            {
+                Console.WriteLine($"{index} {pet.Name}");
+                index++;
+            }
+        }
+
+        //public void PickAPet()
+        //{
+        //    int userInput = Convert.ToInt32(Console.ReadLine());
+        //    myPet = ShelterPets[userInput - 1];
+        //}
     }
 }

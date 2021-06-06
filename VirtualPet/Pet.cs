@@ -12,7 +12,7 @@ namespace VirtualPet
         public int Hunger { get; set; }
         public int Boredom { get; set; }
         public int Health { get; set; }
-        
+
         public Pet()
         {
             Name = "";
@@ -22,8 +22,7 @@ namespace VirtualPet
             Health = 30;
         }
 
-        
-        public void SetName(string name) 
+        public void SetName(string name)
         {
             Name = name;
         }
@@ -42,10 +41,10 @@ namespace VirtualPet
         {
             return Species;
         }
-        
+
         public void SetHunger(int hunger)
         {
-           Hunger = hunger;
+            Hunger = hunger;
         }
 
         public int GetHunger()
@@ -86,24 +85,22 @@ namespace VirtualPet
                 //Console.Beep(1000, 10000);
                 Console.Title = "Game Over";
                 Console.WriteLine(@"
-                   ____    _    __  __ _____    _____     _______ ____  
-                  / ___|  / \  |  \/  | ____|  / _ \ \   / / ____|  _ \ 
+                   ____    _    __  __ _____    _____     _______ ____
+                  / ___|  / \  |  \/  | ____|  / _ \ \   / / ____|  _ \
                  | |  _  / _ \ | |\/| |  _|   | | | \ \ / /|  _| | |_) |
-                 | |_| |/ ___ \| |  | | |___  | |_| |\ V / | |___|  _ < 
+                 | |_| |/ ___ \| |  | | |___  | |_| |\ V / | |___|  _ <
                   \____/_/   \_\_|  |_|_____|  \___/  \_/  |_____|_| \_\
-                                                        
 
                 ");
 
                 Console.WriteLine($"YOU STARVED {Name} TO DEATH!!!....LOSER");
                 Console.Beep(1000, 10000);
-
             }
             else if (Hunger <= 0)
             {
                 Hunger = 0;
             }
-            
+
             if (Health >= 100)
             {
                 Health = 100;
@@ -114,12 +111,11 @@ namespace VirtualPet
                 Console.WriteLine($"YOU KILLED {Name}!!!");
                 Console.Title = "Game Over";
                 Console.WriteLine(@"
-                   ____    _    __  __ _____    _____     _______ ____  
-                  / ___|  / \  |  \/  | ____|  / _ \ \   / / ____|  _ \ 
+                   ____    _    __  __ _____    _____     _______ ____
+                  / ___|  / \  |  \/  | ____|  / _ \ \   / / ____|  _ \
                  | |  _  / _ \ | |\/| |  _|   | | | \ \ / /|  _| | |_) |
-                 | |_| |/ ___ \| |  | | |___  | |_| |\ V / | |___|  _ < 
+                 | |_| |/ ___ \| |  | | |___  | |_| |\ V / | |___|  _ <
                   \____/_/   \_\_|  |_|_____|  \___/  \_/  |_____|_| \_\
-                                                        
 
                 ");
             }
@@ -130,12 +126,11 @@ namespace VirtualPet
                 Console.WriteLine($"YOU KILLED {Name} WITH YOUR BORING WAYS!!!");
                 Console.Title = "Game Over";
                 Console.WriteLine(@"
-                   ____    _    __  __ _____    _____     _______ ____  
-                  / ___|  / \  |  \/  | ____|  / _ \ \   / / ____|  _ \ 
+                   ____    _    __  __ _____    _____     _______ ____
+                  / ___|  / \  |  \/  | ____|  / _ \ \   / / ____|  _ \
                  | |  _  / _ \ | |\/| |  _|   | | | \ \ / /|  _| | |_) |
-                 | |_| |/ ___ \| |  | | |___  | |_| |\ V / | |___|  _ < 
+                 | |_| |/ ___ \| |  | | |___  | |_| |\ V / | |___|  _ <
                   \____/_/   \_\_|  |_|_____|  \___/  \_/  |_____|_| \_\
-                                                        
 
                 ");
             }
@@ -159,7 +154,7 @@ namespace VirtualPet
         {
             Hunger += 10;
             Boredom -= 20;
-            Health += 10;           
+            Health += 10;
         }
 
         public void Tick()
@@ -175,6 +170,5 @@ namespace VirtualPet
         {
             Console.Write($"{Name}'s Status\nHealth: {Health} \nHunger: {Hunger} \nBoredom: {Boredom}\n");
         }
-
     }
 }

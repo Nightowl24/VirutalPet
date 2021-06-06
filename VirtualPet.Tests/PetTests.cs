@@ -22,7 +22,7 @@ namespace VirtualPet.Tests
         // Uncomment code in the test body one test at a time
         // Add source code to eliminate the build errors(red squiggle) and pass the test
 
-       [Fact]
+        [Fact]
         public void Pet_Should_Have_Name()
         {
             testPet.Name = "Pet Name";
