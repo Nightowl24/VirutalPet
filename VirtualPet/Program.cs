@@ -5,31 +5,32 @@ namespace VirtualPet
 {
     internal class Program
     {
-        public static Pet myPet = new Pet();
+        //public static Pet myPet = new Pet();
+        public static Shelter myShelter = new Shelter();
 
         private static void Main(string[] args)
         {
             Console.WriteLine("Hello! Welcome to Virtual Pets");
-            Console.WriteLine("What is your pets name? ");
-            string input = Console.ReadLine();
-            if (string.IsNullOrEmpty(input))
-            {
-                Console.WriteLine("The name can't be empty!  Please enter a name: ");
-                input = Console.ReadLine();
-            }
-            myPet.SetName(input);
+            //Console.WriteLine("What is your pets name? ");
+            //string input = Console.ReadLine();
+            //if (string.IsNullOrEmpty(input))
+            //{
+            //    Console.WriteLine("The name can't be empty!  Please enter a name: ");
+            //    input = Console.ReadLine();
+            //}
+            //myPet.SetName(input);
 
-            //myPet.Name = name;
+            ////myPet.Name = name;
 
-            Console.WriteLine("What kind of species is your pet? ");
-            input = Console.ReadLine();
-            if (string.IsNullOrEmpty(input))
-            {
-                Console.WriteLine("The name can't be empty!  Please enter a species: ");
-                input = Console.ReadLine();
-            }
-            myPet.SetSpecies(input);
-            Console.WriteLine($"Your {myPet.Species}'s name is {myPet.Name}.");
+            //Console.WriteLine("What kind of species is your pet? ");
+            //input = Console.ReadLine();
+            //if (string.IsNullOrEmpty(input))
+            //{
+            //    Console.WriteLine("The name can't be empty!  Please enter a species: ");
+            //    input = Console.ReadLine();
+            //}
+            //myPet.SetSpecies(input);
+            //Console.WriteLine($"Your {myPet.Species}'s name is {myPet.Name}.");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
 
@@ -42,50 +43,82 @@ namespace VirtualPet
             bool virtualPet = true;
             while (virtualPet)
             {
+                Pet myPet = new Pet();
+                myPet.PetStatus();
+
                 Console.Clear();
                 Console.WriteLine("\nWhat would you like to do?");
-                Console.WriteLine("1. Pet Status");
-                Console.WriteLine("2. Feed your pet");
-                Console.WriteLine("3. Take pet to the doctor");
-                Console.WriteLine("4. Play with pet");
-                Console.WriteLine("5. Change pet name");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("1. Admit Pet");
+                Console.WriteLine("2. Pet List");
+                Console.WriteLine("3. Pet Status");
+                Console.WriteLine("4. Feed your pet");
+                Console.WriteLine("5. Take pet to the doctor");
+                Console.WriteLine("6. Play with pet");
+                Console.WriteLine("7. Change pet name");
+                Console.WriteLine("8. Exit");
 
                 string menuChoice = Console.ReadLine();
 
                 switch (menuChoice)
                 {
                     case "1":
+                        Console.WriteLine("What is your pets name? ");
+                        string input = Console.ReadLine();
+                        if (string.IsNullOrEmpty(input))
+                        {
+                            Console.WriteLine("The name can't be empty!  Please enter a name: ");
+                            input = Console.ReadLine();
+                        }
+                        myPet.SetName(input);
+
+                        //myPet.Name = name;
+
+                        Console.WriteLine("What kind of species is your pet? ");
+                        input = Console.ReadLine();
+                        if (string.IsNullOrEmpty(input))
+                        {
+                            Console.WriteLine("The name can't be empty!  Please enter a species: ");
+                            input = Console.ReadLine();
+                        }
+                        myPet.SetSpecies(input);
+                        Console.WriteLine($"Your {myPet.Species}'s name is {myPet.Name}.");
+                        myShelter.AdmitPet(myPet);
+                        
+                        break;
+                    case "2":
+                        myShelter.PetList();
+                        break;
+                    case "3":
                         myPet.PetStatus();
                         break;
 
-                    case "2":
+                    case "4":
                         myPet.Feed();
                         Console.WriteLine($"{myPet.GetName()}'s hunger has decreased by 40.");
                         Console.WriteLine($"Your pet's hunger level is now: {myPet.GetHunger()}");
                         break;
 
-                    case "3":
+                    case "5":
                         myPet.SeeDoctor();
                         Console.WriteLine($"{myPet.GetName()} is feeling better now.");
                         Console.WriteLine($"Your pet's health level is now: {myPet.GetHealth()}");
                         break;
 
-                    case "4":
+                    case "6":
                         myPet.Play();
                         Console.WriteLine($"{myPet.GetName()} loves to play!");
                         Console.WriteLine($"Your pet's boredom has decreased to {myPet.GetBoredom()}, " +
                             "and their health and hunger have increased.");
                         break;
 
-                    case "5":
+                    case "7":
                         Console.WriteLine($"That's terrific, {myPet.GetName()} was a REALLY bad name!  What name would you like: ");
-                        string input = Console.ReadLine();
-                        myPet.SetName(input);
+                        string updateName = Console.ReadLine();
+                        myPet.SetName(updateName);
                         Console.WriteLine($"Your {myPet.GetSpecies()}'s name is now {myPet.GetName()}.  A much better choice, if you ask me.");
                         break;
 
-                    case "6":
+                    case "8":
                         Console.WriteLine("Thank you for playing Virtual Pets");
                         virtualPet = false;
                         break;
@@ -95,11 +128,11 @@ namespace VirtualPet
                         break;
                 }
                 //myPet.Tick();
-                if (menuChoice != "1")
-                {
-                    myPet.PetStatus();
-                }
-                myPet.PetLevels();
+                //if (menuChoice != "3")
+                //{
+                //    myPet.PetStatus();
+                //}
+                //myPet.PetLevels();
                 Console.WriteLine("Press any key to continue");
                 Console.ReadKey();
             }
@@ -107,6 +140,7 @@ namespace VirtualPet
 
         private static void TimerCallBack(Object o)
         {
+            Pet myPet = new Pet();
             myPet.Tick();
             //Console.WriteLine(DateTime.Now);
             GC.Collect();
