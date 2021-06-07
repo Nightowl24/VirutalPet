@@ -21,7 +21,9 @@ namespace VirtualPet
             {
                 Pet myPet = new Pet();
 
+
                 Console.WriteLine("\nWhat would you like to do?");
+
                 Console.WriteLine("1. Admit Pet");
                 Console.WriteLine("2. Pet List");
                 Console.WriteLine("3. Pet Status");
@@ -37,8 +39,29 @@ namespace VirtualPet
                 switch (menuChoice)
                 {
                     case "1":
+                        Console.WriteLine("Is this pet Robotic? Y/N ");
+                        string input = Console.ReadLine().ToUpper();
+                        if (string.IsNullOrEmpty(input))
+                        {
+                            Console.WriteLine("The name can't be empty!  Please try again. ");
+                            input = Console.ReadLine();
+                        }
+                        if (input == "Y")
+
+                        {
+                            myPet = new RoboPet();
+                            myPet.IsRobot = true;
+                            
+                        }
+                        else
+                        {
+                            myPet = new Pet();
+                            myPet.IsRobot = false;
+                            
+                        }
+
                         Console.WriteLine("What is your pet's name? ");
-                        string input = Console.ReadLine();
+                            input = Console.ReadLine();
                         if (string.IsNullOrEmpty(input))
                         {
                             Console.WriteLine("The name can't be empty!  Please enter a name: ");
@@ -54,9 +77,13 @@ namespace VirtualPet
                             input = Console.ReadLine();
                         }
                         myPet.SetSpecies(input);
-                        Console.WriteLine($"Your {myPet.Species}'s name is {myPet.Name}.");
+
+
+                        string str = myPet.IsRobot ? $"Your Robotic {myPet.Species}'s name is {myPet.Name}." :  $"Your Real {myPet.Species}'s name is {myPet.Name}.";
+                        Console.WriteLine(str);
                         myShelter.AdmitPet(myPet);
                         break;
+
 
                     case "2":
                         myShelter.PetList();

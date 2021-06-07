@@ -14,6 +14,8 @@ namespace VirtualPet
         public int Boredom { get; set; }
         public int Health { get; set; }
 
+        public bool IsRobot { get; set; }
+
         public Pet()
         {
             Name = "";
@@ -28,22 +30,22 @@ namespace VirtualPet
             timer.Elapsed += TimerCallBack;
         }
 
-        public void SetName(string name)
+        public virtual void SetName(string name)
         {
             Name = name;
         }
 
-        public string GetName()
+        public virtual string GetName()
         {
             return Name;
         }
 
-        public void SetSpecies(string species)
+        public virtual void SetSpecies(string species)
         {
             Species = species;
         }
 
-        public string GetSpecies()
+        public virtual string GetSpecies()
         {
             return Species;
         }
@@ -72,6 +74,7 @@ namespace VirtualPet
 
         public void SetHealth(int health)
         {
+
             Health = health;
         }
 
@@ -165,15 +168,16 @@ namespace VirtualPet
             Health += 10;
         }
 
-        public void Tick()
+        public virtual void Tick()
         {
-            PetLevels();
+            
             Hunger += 5;
             Boredom += 5;
             Health -= 5;
+            PetLevels();
         }
 
-        public void PetStatus()
+        public virtual void PetStatus()
         {
             Console.WriteLine($"{Name}'s Status\nHealth: {Health} \nHunger: {Hunger} \nBoredom: {Boredom}\n");
         }

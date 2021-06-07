@@ -56,6 +56,7 @@ namespace VirtualPet
         public Pet GetPet(string name)
         {
             return ShelterPets.First(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+
         }
     }
 }
