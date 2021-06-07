@@ -190,6 +190,9 @@ namespace VirtualPet
                 Console.ReadKey();
                 Console.Clear();
             }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello! Welcome to Virtual Pets");
         }
     }
 }
