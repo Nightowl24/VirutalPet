@@ -51,17 +51,17 @@ namespace VirtualPet
                         {
                             myPet = new RoboPet();
                             myPet.IsRobot = true;
-                            
+
                         }
                         else
                         {
                             myPet = new Pet();
                             myPet.IsRobot = false;
-                            
+
                         }
 
                         Console.WriteLine("What is your pet's name? ");
-                            input = Console.ReadLine();
+                        input = Console.ReadLine();
                         if (string.IsNullOrEmpty(input))
                         {
                             Console.WriteLine("The name can't be empty!  Please enter a name: ");
@@ -79,7 +79,7 @@ namespace VirtualPet
                         myPet.SetSpecies(input);
 
 
-                        string str = myPet.IsRobot ? $"Your Robotic {myPet.Species}'s name is {myPet.Name}." :  $"Your Real {myPet.Species}'s name is {myPet.Name}.";
+                        string str = myPet.IsRobot ? $"Your Robotic {myPet.Species}'s name is {myPet.Name}." : $"Your Real {myPet.Species}'s name is {myPet.Name}.";
                         Console.WriteLine(str);
                         myShelter.AdmitPet(myPet);
                         break;
@@ -108,7 +108,7 @@ namespace VirtualPet
                             Console.WriteLine("You have fed all the animals.");
                             myShelter.PetList();
                         }
-                        else 
+                        else
                         {
                             Pet petToFeed = myShelter.GetPet(input);
                             petToFeed.Feed();
@@ -119,7 +119,7 @@ namespace VirtualPet
 
                     case "5":
                         Console.WriteLine($"Available pets: {string.Join(", ", myShelter.ShelterPets.Select(x => x.Name))}");
-                        Console.WriteLine("Which pet would you like to see the doctor ('all' to play with all): "); 
+                        Console.WriteLine("Which pet would you like to see the doctor ('all' to play with all): ");
                         input = Console.ReadLine();
                         if (input.Equals("all", StringComparison.OrdinalIgnoreCase))
                         {
@@ -127,12 +127,12 @@ namespace VirtualPet
                             Console.WriteLine("All pets have been seen by the doctor.");
                             myShelter.PetList();
                         }
-                        else 
-                        { 
-                        Pet petToSeeDoctor = myShelter.GetPet(input);
-                        petToSeeDoctor.SeeDoctor();
-                        Console.WriteLine($"{petToSeeDoctor.GetName()} is feeling better now.");
-                        Console.WriteLine($"Your pet's health level is now: {petToSeeDoctor.GetHealth()}");
+                        else
+                        {
+                            Pet petToSeeDoctor = myShelter.GetPet(input);
+                            petToSeeDoctor.SeeDoctor();
+                            Console.WriteLine($"{petToSeeDoctor.GetName()} is feeling better now.");
+                            Console.WriteLine($"Your pet's health level is now: {petToSeeDoctor.GetHealth()}");
                         }
                         break;
 
@@ -162,7 +162,7 @@ namespace VirtualPet
                         input = Console.ReadLine();
                         Pet petToRename = myShelter.GetPet(input);
                         Console.WriteLine($"That's terrific, {input} was a REALLY bad name!  What name would you like: ");
-                        input = Console.ReadLine();                   
+                        input = Console.ReadLine();
                         petToRename.SetName(input);
                         Console.WriteLine($"This pet's name is now {petToRename.GetName()}.  A much better choice, if you ask me.");
                         break;
@@ -190,9 +190,6 @@ namespace VirtualPet
                 Console.ReadKey();
                 Console.Clear();
             }
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello! Welcome to Virtual Pets");
         }
     }
 }
