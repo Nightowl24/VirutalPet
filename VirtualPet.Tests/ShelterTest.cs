@@ -43,7 +43,7 @@ namespace VirtualPet.Tests
             Pet mypet = new Pet();
             myShelter.AdmitPet(mypet);
 
-            myShelter.Playall();
+            myShelter.PlayAll();
 
             Assert.Equal(40, myShelter.ShelterPets[0].Health);
         }
@@ -63,17 +63,18 @@ namespace VirtualPet.Tests
         }
 
         [Fact]
-        public void PickAPet_Should_Select_A_Pet_From_The_List_To_Interact_With()
+        public void GetPet_Should_Select_A_Pet_From_The_List_To_Interact_With()
         {
             //Arrange
-            Pet mypet = new Pet();
-            myShelter.AdmitPet(mypet);
+            Pet expectedPet = new Pet { Name = "Barry" };
+            myShelter.AdmitPet(new Pet {Name = "Molly"});
+            myShelter.AdmitPet(expectedPet);
 
             //Act
-            myShelter.PickAPet();
+            Pet result = myShelter.GetPet("barry");
 
             //Assert
-            Assert.Empty(myShelter.ShelterPets);
+            Assert.Equal(expectedPet, result);
         }
     }
 }

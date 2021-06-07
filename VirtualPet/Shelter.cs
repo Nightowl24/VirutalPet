@@ -21,7 +21,7 @@ namespace VirtualPet
             ShelterPets.Remove(pet);
         }
 
-        public void Playall()
+        public void PlayAll()
         {
             foreach (var pet in ShelterPets)
             {
@@ -29,21 +29,33 @@ namespace VirtualPet
             }
         }
 
-        public void PetList()
+        public void SeeDoctorAll()
         {
-            int index = 1;
             foreach (var pet in ShelterPets)
             {
-            
-               Console.WriteLine($"{index} {pet.Name}'s Status\nHealth: {pet.Health} \nHunger: {pet.Hunger} \nBoredom: {pet.Boredom}\n");
-                index++;
+                pet.SeeDoctor();
             }
         }
 
-        //public void PickAPet()
-        //{
-        //    int userInput = Convert.ToInt32(Console.ReadLine());
-        //    myPet = ShelterPets[userInput - 1];
-        //}
+        public void FeedAll()
+        {
+            foreach (var pet in ShelterPets)
+            {
+                pet.Feed();
+            }
+        }
+
+        public void PetList()
+        {
+            foreach (var pet in ShelterPets)
+            {
+                pet.PetStatus();
+            }
+        }
+
+        public Pet GetPet(string name)
+        {
+            return ShelterPets.First(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }
